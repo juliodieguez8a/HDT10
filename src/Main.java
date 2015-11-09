@@ -1,14 +1,13 @@
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Main {
 
     public static void main(String[] args){
     	
     	System.out.println("=========BIENVENIDO=========");
-    	
+    	System.out.println("Ciudades Disponibles:");
+    	System.out.println("Guatemala, Escuintla, Antigua, Atitlan\n");
         Floyd matriz = new Floyd(); // Matriz de adyacencia
         matriz.caminoCorto(); // Algoritmo de Floyd para encontrar el camino mas corto entre todos los nodos
         int seleccion; // Seleccion del usuario para realizar

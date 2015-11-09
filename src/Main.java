@@ -1,7 +1,5 @@
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Main {
 
@@ -22,7 +20,7 @@ public class Main {
         while(seleccion!=4){
             // Desplegar la matriz
             System.out.println("\nMatriz de adyacencia");
-            matriz.D.show();
+            matriz.g_i.show();
             
             // Si la respuesta es 1, preguntar por las ciudades y desplegar resultados
             if(seleccion==1){
@@ -32,11 +30,11 @@ public class Main {
                 System.out.println("Ingrese el nombre de la ciudad de destino");
                 String ciudad2 = scan.next();
                 // Si las ciudades se encuentran en la matriz, entonces desplegar la distancia minima y la ruta completa
-                if(matriz.D.contains(ciudad1)&&matriz.D.contains(ciudad2)){
-                    System.out.println("\nLa distancia minima es: "+matriz.D.getEdge(ciudad1, ciudad2)+".");
-                    if(matriz.D.getEdge(ciudad1, ciudad2)!=10000){
+                if(matriz.g_i.contains(ciudad1)&&matriz.g_i.contains(ciudad2)){
+                    System.out.println("\nLa distancia minima es: "+matriz.g_i.getEdge(ciudad1, ciudad2)+".");
+                    if(matriz.g_i.getEdge(ciudad1, ciudad2)!=10000){
                         System.out.print("La ruta es: "+ciudad1);
-                        matriz.mostrarIntermedias(matriz.D.getIndex(ciudad1), matriz.D.getIndex(ciudad2));
+                        matriz.mostrarIntermedias(matriz.g_i.getIndex(ciudad1), matriz.g_i.getIndex(ciudad2));
                         System.out.println(", "+ciudad2);
                     }
                 }
@@ -59,8 +57,8 @@ public class Main {
                     String ciudad1 = scan.next();
                     System.out.println("Ingrese el nombre de la ciudad de destino");
                     String ciudad2 = scan.next();
-                    if(matriz.D.contains(ciudad1)&&matriz.D.contains(ciudad2)){
-                        matriz.D.addEdge(ciudad1, ciudad2, 10000);
+                    if(matriz.g_i.contains(ciudad1)&&matriz.g_i.contains(ciudad2)){
+                        matriz.g_i.addEdge(ciudad1, ciudad2, 10000);
                         // Guarda los cambios en el archivo
                         try {
                             matriz.a.write(ciudad1+" "+ciudad2+" 10000");
@@ -78,14 +76,14 @@ public class Main {
                     System.out.println("Ingrese la distancia entre las ciudades");
                     int distancia = scan.nextInt();
                     // Si las ciudades ya existen, cambiar el valor
-                    if(matriz.D.contains(ciudad1)&&matriz.D.contains(ciudad2)){
-                        matriz.D.addEdge(ciudad1, ciudad2, distancia);
+                    if(matriz.g_i.contains(ciudad1)&&matriz.g_i.contains(ciudad2)){
+                        matriz.g_i.addEdge(ciudad1, ciudad2, distancia);
                     }
                     // Si las ciudades no existen, agregarlas a la matriz
                     else{
-                        matriz.D.add(ciudad1);
-                        matriz.D.add(ciudad2);
-                        matriz.D.addEdge(ciudad1, ciudad2, distancia);
+                        matriz.g_i.add(ciudad1);
+                        matriz.g_i.add(ciudad2);
+                        matriz.g_i.addEdge(ciudad1, ciudad2, distancia);
                     }
                     // Guarda los cambios en el archivo
                     try {

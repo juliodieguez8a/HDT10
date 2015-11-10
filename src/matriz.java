@@ -1,5 +1,6 @@
 import java.util.Vector;
 
+
 /**
  *
  * @param <V> 
@@ -29,7 +30,7 @@ public class matriz<V,E> implements grafo_interfaz<V,E>{
             vertices.add(label);
         }
     }
-
+    
     @Override
     public void addEdge(V vtx1, V vtx2, E label) {
         int i = vertices.indexOf(vtx1);
@@ -53,6 +54,7 @@ public class matriz<V,E> implements grafo_interfaz<V,E>{
     public int size(){
         return vertices.size();
     }
+    
 
     @Override
     public int getEdge(V label1, V label2){

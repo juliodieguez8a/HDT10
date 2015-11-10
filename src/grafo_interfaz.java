@@ -1,6 +1,7 @@
 public interface grafo_interfaz<V,E> {
 
     public void add(V label);
+    
 
     public void addEdge(V vtx1, V vtx2, E label);
 
